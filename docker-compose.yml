@@ -12,6 +12,7 @@ services:
     tty: true
     #restart: on-failure
     working_dir: /app
+    command: yarn dev
 
 volumes:
   front_node_modules:
