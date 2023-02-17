@@ -12,7 +12,19 @@ services:
     tty: true
     #restart: on-failure
     working_dir: /app
-    command: yarn dev
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - 5001:5000
+    volumes:
+      - ./server/nginx.conf:/etc/nginx/nginx.conf
+      - ./server/conf.d:/etc/nginx/conf.d
+      - ./server/log:/var/log/nginx
+    tty: true
+    #restart: on-failure
 
 volumes:
   front_node_modules:
